@@ -13,18 +13,23 @@ function VisibilityRedirect(props) {
 
   useEffect(() => {
     let appDestination = appState.redirectSelection;
-    document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "hidden"){
-        redirect(appDestination);
-        localStorage.removeItem("selectedStyle");
+    let idleTimer;
+    const gtfo = () => {
+      if (document.visibilityState !== "visible"){
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(()=>{
+          redirect(appDestination);
+          localStorage.removeItem("selectedStyle");
+        }, 10000);
       }
-    });
-    // return () => {
-    //   document.removeEventListener(
-    //     "visibilitychange",
-    //     redirect(redirectSelection)
-    //   );
-    // };
+    }
+    document.addEventListener("visibilitychange", gtfo);
+    return () => {
+      document.removeEventListener(
+        "visibilitychange",
+        gtfo
+      );
+    };
   }, []);
   return <></>;
 }

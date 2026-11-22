@@ -109,8 +109,10 @@ function Overlay(props) {
                     .getElementById("favicon")
                     .setAttribute(
                       "href",
-                      "../img/icon_heart_" + selectedName + ".png"
+                      // "../img/icon_heart_" + selectedName + ".png"
+                      `${process.env.PUBLIC_URL}/img/icon_heart_${selectedName}.png`
                     );
+                    console.log(`${process.env.PUBLIC_URL}/img/icon_heart_${selectedName}.png`);
                   window.scrollTo(0, 0);
                 }, 200);
               }}

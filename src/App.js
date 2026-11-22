@@ -32,7 +32,7 @@ function App() {
         let destination = "https://" + draft.redirectSelection + ".com";
         document.getElementById('blank-overlay').classList.remove('hidden');
         window.open(destination, '_blank');
-        window.location.replace(destination);
+        setTimeout(()=>{window.location.replace(destination)}, 10);
         // console.log(
         //   `totally going to redirect to ${destination} once testing is complete`
         // );
