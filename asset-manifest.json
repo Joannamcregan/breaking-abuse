@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/breaking-abuse/static/css/main.b802f233.css",
-    "main.js": "/breaking-abuse/static/js/main.6acabece.js",
+    "main.js": "/breaking-abuse/static/js/main.a20db3be.js",
     "index.html": "/breaking-abuse/index.html",
     "main.b802f233.css.map": "/breaking-abuse/static/css/main.b802f233.css.map",
-    "main.6acabece.js.map": "/breaking-abuse/static/js/main.6acabece.js.map"
+    "main.a20db3be.js.map": "/breaking-abuse/static/js/main.a20db3be.js.map"
   },
   "entrypoints": [
     "static/css/main.b802f233.css",
-    "static/js/main.6acabece.js"
+    "static/js/main.a20db3be.js"
   ]
 }
