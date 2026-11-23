@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from "react";
-import { redirect } from "react-router-dom";
 import DispatchContext from "../DispatchContext";
 import StateContext from "../StateContext";
 
@@ -20,8 +19,10 @@ function MotionRedirect(onExit) {
         event.acceleration.y > 15 ||
         event.acceleration.z > 15
       ) {
-        redirect();
-      } 
+        window.location.replace('duckduckgo.com');
+      } else {
+        window.location.replay('bing.com');
+      }
     });
     // return () => {
     //   document.removeEventListener(
