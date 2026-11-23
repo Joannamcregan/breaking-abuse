@@ -13,6 +13,7 @@ import MotionRedirect from "./components/MotionRedirect";
 import StateContext from "./StateContext";
 import DispatchContext from "./DispatchContext";
 import { HashRouter, Routes, Route } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const initialState = {
@@ -22,22 +23,46 @@ function App() {
     hasSelection: localStorage.getItem("selectedStyle")
   };
 
-  function theReducer(draft, action) {
+  function theReducer(state, action) {
     switch (action.type) {
       case "setRedirectSelection":
-        draft.redirectSelection = action.value;
-        localStorage.setItem("selectedStyle", action.value);
-        break;
-      case "redirect":
-        let destination = "https://" + draft.redirectSelection + ".com";
-        document.getElementById('blank-overlay').classList.remove('hidden');
-        window.open(destination, '_blank');
-        setTimeout(()=>{window.location.replace(destination)}, 10);
-        // console.log(
-        //   `totally going to redirect to ${destination} once testing is complete`
-        // );
-        break;
+        return { ...state, redirectSelection: action.value };
+      default:
+        return state;
+        // state.redirectSelection = action.value;
+        // localStorage.setItem("selectedStyle", action.value);
+        // break;
+      // case "redirect":
+      //   let destination = "https://" + draft.redirectSelection + ".com";
+      //   document.getElementById('blank-overlay').classList.remove('hidden');
+      //   window.open(destination, '_blank');        
+      //   setTimeout(()=>{window.location.replace(destination)}, 10);
+      //   // console.log(
+      //   //   `totally going to redirect to ${destination} once testing is complete`
+      //   // );
+      //   break;
     }
+  }
+
+  const getTheFuckOut= () =>{
+    document.getElementById('blank-overlay').classList.remove('hidden')
+    let redirectSelection = state.redirectSelection !== null? state.redirectSelection : 'cnn';
+    let redirectExtension;
+    switch (redirectSelection){
+      case 'aljazeera' :
+        redirectExtension = '/us-canada';
+        break;
+      case 'nbcnews' :
+        redirectExtension = '/us-news';
+        break;
+      default:
+        redirectExtension = '/us';
+    }
+    let destination = 'Https://' + redirectSelection + '.com';
+    window.open(destination + redirectExtension, '_blank')
+    setTimeout(()=>{
+      window.location.replace(destination)
+    }, 5);
   }
 
   const [state, dispatch] = useImmerReducer(theReducer, initialState);
@@ -50,7 +75,7 @@ function App() {
           <MotionRedirect />
           <Header />
           <Overlay />
-          <QuickExit redirectSelection={state.redirectSelection} />
+          <QuickExit onExit={getTheFuckOut} />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/risk" element={<Risk />} />

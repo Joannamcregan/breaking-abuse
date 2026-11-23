@@ -35,10 +35,10 @@ function Menu(props) {
           className="invisible pointer"
           onClick={toggleMenu}
         />
-        <Link to="/" onClick={toggleMenu}>
+        <Link to="/" replace onClick={toggleMenu}>
           Gain clarity
         </Link>
-        <Link to="/risk" onClick={toggleMenu}>
+        <Link to="/risk" replace onClick={toggleMenu}>
           Understand your risk
         </Link>
       </nav>

@@ -9,7 +9,7 @@ function Header(props) {
     <>
       <header className={appState.redirectSelection}>
         <div id="header-content">
-          <Link to="/">
+          <Link to="/" replace>
             <img
               src={`${process.env.PUBLIC_URL}/img/heart_cnn.jpg`}
               alt="a simple drawing of a heart with an EKG reading line"

@@ -3,7 +3,7 @@ import { redirect } from "react-router-dom";
 import DispatchContext from "../DispatchContext";
 import StateContext from "../StateContext";
 
-function QuickExit(props) {
+function QuickExit({onExit}) {
   const appState = useContext(StateContext);
   const appDispatch = useContext(DispatchContext);
 
@@ -17,7 +17,8 @@ function QuickExit(props) {
     <p
       id="exit"
       onClick={appDestination => {
-        redirect(appDestination);
+        // redirect(appDestination);
+        onExit();
       }}
     >
       Exit
