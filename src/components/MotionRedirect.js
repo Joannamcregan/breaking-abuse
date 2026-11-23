@@ -1,34 +1,22 @@
-import React, { useEffect, useContext } from "react";
-import DispatchContext from "../DispatchContext";
-import StateContext from "../StateContext";
+import { useEffect } from "react";
 
 function MotionRedirect({onExit}) {
-  const appState = useContext(StateContext);
-  const appDispatch = useContext(DispatchContext);
 
-  function redirect() {
-    // appDispatch({ type: "redirect" });
-    window.location.replace('google.com');
-  }
 
   useEffect(() => {
-    let appDestination = appState.redirectSelection;
     window.addEventListener("devicemotion", (event) => {
       if (
         event.acceleration.x > 15 ||
         event.acceleration.y > 15 ||
         event.acceleration.z > 15
-      ) {
-        window.open('https://google.com', '_blank');
-        window.location.replace('https://duckduckgo.com');
-      } 
+      ) { onExit(); } 
     });
-    // return () => {
-    //   document.removeEventListener(
-    //     "devicemotion",
-    //     redirect(redirectSelection)
-    //   );
-    // };
+    return () => {
+      document.removeEventListener(
+        "devicemotion",
+        onExit()
+      );
+    };
   }, []);
   return <></>;
 }
