@@ -19,10 +19,8 @@ function MotionRedirect(onExit) {
         event.acceleration.y > 15 ||
         event.acceleration.z > 15
       ) {
-        window.location.replace('duckduckgo.com');
-      } else {
-        window.location.replay('bing.com');
-      }
+        window.location.replace('https://duckduckgo.com');
+      } 
     });
     // return () => {
     //   document.removeEventListener(
