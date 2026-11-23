@@ -29,18 +29,6 @@ function App() {
         return { ...state, redirectSelection: action.value };
       default:
         return state;
-        // state.redirectSelection = action.value;
-        // localStorage.setItem("selectedStyle", action.value);
-        // break;
-      // case "redirect":
-      //   let destination = "https://" + draft.redirectSelection + ".com";
-      //   document.getElementById('blank-overlay').classList.remove('hidden');
-      //   window.open(destination, '_blank');        
-      //   setTimeout(()=>{window.location.replace(destination)}, 10);
-      //   // console.log(
-      //   //   `totally going to redirect to ${destination} once testing is complete`
-      //   // );
-      //   break;
     }
   }
 
@@ -59,10 +47,8 @@ function App() {
         redirectExtension = '/us';
     }
     let destination = 'Https://' + redirectSelection + '.com';
-    window.open(destination + redirectExtension, '_blank')
-    setTimeout(()=>{
-      window.location.replace(destination)
-    }, 5);
+    window.open(destination + redirectExtension, '_blank');
+    window.location.replace(destination);
   }
 
   const [state, dispatch] = useImmerReducer(theReducer, initialState);
@@ -71,8 +57,8 @@ function App() {
     <StateContext.Provider value={state}>
       <DispatchContext.Provider value={dispatch}>
         <HashRouter>
-          <VisibilityRedirect />
-          <MotionRedirect />
+          <VisibilityRedirect onExit={getTheFuckOut} />
+          <MotionRedirect onExit={getTheFuckOut} />
           <Header />
           <Overlay />
           <QuickExit onExit={getTheFuckOut} />

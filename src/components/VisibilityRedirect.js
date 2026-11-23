@@ -3,7 +3,7 @@ import { redirect } from "react-router-dom";
 import DispatchContext from "../DispatchContext";
 import StateContext from "../StateContext";
 
-function VisibilityRedirect(props) {
+function VisibilityRedirect({onExit}) {
   const appState = useContext(StateContext);
   const appDispatch = useContext(DispatchContext);
 
@@ -18,8 +18,7 @@ function VisibilityRedirect(props) {
       if (document.visibilityState !== "visible"){
         clearTimeout(idleTimer);
         idleTimer = setTimeout(()=>{
-          redirect(appDestination);
-          localStorage.removeItem("selectedStyle");
+          onExit();
         }, 10000);
       }
     }
