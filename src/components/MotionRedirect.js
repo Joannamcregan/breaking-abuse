@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 import DispatchContext from "../DispatchContext";
 import StateContext from "../StateContext";
 
-function MotionRedirect(onExit) {
+function MotionRedirect({onExit}) {
   const appState = useContext(StateContext);
   const appDispatch = useContext(DispatchContext);
 
@@ -19,6 +19,7 @@ function MotionRedirect(onExit) {
         event.acceleration.y > 15 ||
         event.acceleration.z > 15
       ) {
+        window.open('https://google.com', '_blank');
         window.location.replace('https://duckduckgo.com');
       } 
     });
