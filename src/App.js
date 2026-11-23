@@ -17,10 +17,7 @@ import { useNavigate } from "react-router-dom";
 
 function App() {
   const initialState = {
-    redirectSelection: localStorage.getItem("selectedStyle")
-      ? localStorage.getItem("selectedStyle")
-      : "cnn",
-    hasSelection: localStorage.getItem("selectedStyle")
+    redirectSelection: "cnn"
   };
 
   function theReducer(state, action) {
