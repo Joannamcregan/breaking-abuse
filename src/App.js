@@ -37,15 +37,15 @@ function App() {
     switch (redirectSelection){
       case 'aljazeera' :
         // redirectExtension = '/us-canada';
-        extendedSelection += '/us-canada';
+        extendedSelection = 'https://' + extendedSelection + '.com/us-canada';
         break;
       case 'nbcnews' :
         // redirectExtension = '/us-news';
-        extendedSelection += 'us-news';
+        extendedSelection = 'https://' + extendedSelection + '.com/us-news';
         break;
       default:
         // redirectExtension = '/us';
-        extendedSelection += '/us';
+        extendedSelection = 'https://' + extendedSelection + '.com/us';
     }
     let destination = 'Https://' + redirectSelection + '.com';
     window.open(extendedSelection, '_blank');
