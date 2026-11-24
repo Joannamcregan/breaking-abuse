@@ -31,7 +31,7 @@ function App() {
 
   const getTheFuckOut= () =>{
     document.getElementById('blank-overlay').classList.remove('hidden')
-    let redirectSelection = state.redirectSelection !== null? state.redirectSelection : 'cnn';
+    let redirectSelection = state.redirectSelection !== null? state.redirectSelection : 'google';
     let redirectExtension;
     switch (redirectSelection){
       case 'aljazeera' :
@@ -44,8 +44,7 @@ function App() {
         redirectExtension = '/us';
     }
     let destination = 'Https://' + redirectSelection + '.com';
-    let extendedDestination = destination + redirectExtension;
-    window.open(destination, '_blank');
+    window.open(destination + redirectExtension, '_blank');
     window.location.replace(destination);
   }
 
