@@ -44,7 +44,8 @@ function App() {
         redirectExtension = '/us';
     }
     let destination = 'Https://' + redirectSelection + '.com';
-    window.open(destination + redirectExtension, '_blank');
+    let extendedDestination = destination + redirectExtension;
+    window.open(destination, '_blank');
     window.location.replace(destination);
   }
 
