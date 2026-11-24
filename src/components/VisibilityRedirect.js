@@ -1,18 +1,7 @@
-import React, { useEffect, useContext } from "react";
-import { redirect } from "react-router-dom";
-import DispatchContext from "../DispatchContext";
-import StateContext from "../StateContext";
+import { useEffect } from "react";
 
 function VisibilityRedirect({onExit}) {
-  const appState = useContext(StateContext);
-  const appDispatch = useContext(DispatchContext);
-
-  function redirect(destination) {
-    appDispatch({ type: "redirect" });
-  }
-
   useEffect(() => {
-    let appDestination = appState.redirectSelection;
     let idleTimer;
     const gtfo = () => {
       if (document.visibilityState !== "visible"){
@@ -29,7 +18,7 @@ function VisibilityRedirect({onExit}) {
         gtfo
       );
     };
-  }, []);
+  }, [onExit]);
   return <></>;
 }
 
