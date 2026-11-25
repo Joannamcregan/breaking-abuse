@@ -32,23 +32,7 @@ function App() {
   const getTheFuckOut= () =>{
     document.getElementById('blank-overlay').classList.remove('hidden')
     let redirectSelection = state.redirectSelection !== null? state.redirectSelection : 'cnn';
-    let extendedSelection = state.redirectSelection !== null? state.redirectSelection : 'google';
-    // let redirectExtension;
-    switch (redirectSelection){
-      case 'aljazeera' :
-        // redirectExtension = '/us-canada';
-        extendedSelection = 'https://' + extendedSelection + '.com/us-canada';
-        break;
-      case 'nbcnews' :
-        // redirectExtension = '/us-news';
-        extendedSelection = 'https://' + extendedSelection + '.com/us-news';
-        break;
-      default:
-        // redirectExtension = '/us';
-        extendedSelection = 'https://' + extendedSelection + '.com/us';
-    }
     let destination = 'Https://' + redirectSelection + '.com';
-    window.open(extendedSelection, '_blank');
     window.location.replace(destination);
   }
 
